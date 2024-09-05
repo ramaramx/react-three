@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { Canvas } from '@react-three/fiber'
-import { Center, AccumulativeShadows, RandomizedLight, Environment, OrbitControls } from '@react-three/drei'
+import { Center, Environment, OrbitControls } from '@react-three/drei'
 import { Model } from './datsun.tsx'
 import { XROrigin, XR, createXRStore } from '@react-three/xr'
 import { Suspense } from 'react'
