@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import { Canvas } from '@react-three/fiber'
 import { Center, Environment, OrbitControls } from '@react-three/drei'
 import { Model } from './datsun.tsx'
@@ -7,6 +5,14 @@ import { XROrigin, XR, createXRStore } from '@react-three/xr'
 import { Suspense } from 'react'
 
 const store = createXRStore({ depthSensing: true, hand: false })
+
+// Function to dynamically load the script into the head
+function loadARScript() {
+  const script = document.createElement('script')
+  script.src = 'https://launchar.app/sdk/v1?key=wq218Ks333kuBXLbT2XZ4hJjeLGGZMnN&redirect=true'
+  script.async = true
+  document.head.appendChild(script)
+}
 
 export default function App() {
   return (
@@ -28,7 +34,10 @@ export default function App() {
           boxShadow: '0px 0px 20px rgba(0,0,0,1)',
           transform: 'translate(-50%, 0)',
         }}
-        onClick={() => store.enterAR()}
+        onClick={() => {
+          store.enterAR()
+          loadARScript()  // Injects the script when AR starts
+        }}
       >
         Enter AR
       </button>
